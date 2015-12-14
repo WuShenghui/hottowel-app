@@ -1,0 +1,22 @@
+﻿<div ng-controller="SidebarController as vm">
+    <ht-sidebar when-done-animating="vm.sidebarReady()">
+        <div class="sidebar-filler"></div>
+        <div class="sidebar-dropdown"><a href="#">Menu</a></div>
+        <div class="sidebar-inner">
+            <div class="sidebar-widget"></div>
+            <md-content class="navi" role="navigation">
+
+                <ul class="side-menu">
+                    <li ng-repeat="menu in vm.navRoutes.menuGroups" class="nlightblue parent-list-item" ng-class="{'parentActive' : vm.isMenuGroupSelected(menu)}">
+                        <h2 class="menu-heading" ng-if="menu.type === 'heading'" id="heading_{{ menu.title | nospace }}">
+            {{menu}}
+          </h2>
+                        <menu-link menu="menu" ng-if="menu.type === 'link'"></menu-link>
+                        <menu-toggle menu="menu" ng-if="menu.type === 'toggle'"></menu-toggle>
+                    </li>
+                </ul>
+
+            </md-content>
+        </div>
+    </ht-sidebar>
+</div>
