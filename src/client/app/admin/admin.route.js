@@ -22,6 +22,7 @@
                     controllerAs: 'vm',
                     title: 'Admin',
                     settings: {
+                        nav: 1,
                         menuGroup: 'Admin',
                         icon: 'fa fa-map-marker',
                         type: 'link',

@@ -38,7 +38,7 @@
                         return;
                     }
                     
-                    if(r.settings.menuGroup){
+                    if(r.settings.menuGroup) {
                         for (var index = 0; index < length; index++) {
                             if (vm.navRoutes.menuGroups[index].name && vm.navRoutes.menuGroups[index].name == r.settings.menuGroup) {
                                 isContain = true;
@@ -47,12 +47,14 @@
                             }
                         }   
     
-                        if(isContain){
+                        if(isContain) {
                             vm.navRoutes.menuGroups[containIndex].menus.push(menuService.newMenuGroupItem(r));
                         }
-                        else{
+                        else {
                             vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));
                         }  
+                    } else {
+                        vm.navRoutes.menuGroups.push(menuService.newMenu(r));
                     }
                 }       
             });

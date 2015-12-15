@@ -9,6 +9,7 @@
   function menuService ($location) {
     var service = {
       menuGroups: getMenuGroups(),
+      newMenu: newMenu,
       newMenuGroups: newMenuGroups,
       newMenuGroupItem: newMenuGroupItem,
       toggleSelectMenuGroup: toggleSelectMenuGroup,
@@ -25,6 +26,10 @@
     
     return menuGroups;
   }
+  
+  function newMenu(navRoute) {
+    return newMenuGroupItem(navRoute);
+  }
 
  function newMenuGroups(navRoute) {
    return {
@@ -33,6 +38,7 @@
      menus:[
          {
              name: navRoute.title,
+             nav: navRoute.nav,
              state: navRoute.settings.state,
              icon: navRoute.settings.icon,
              type: navRoute.settings.type
@@ -44,6 +50,7 @@
  function newMenuGroupItem(navRoute) {
    return {
      name: navRoute.title,
+     nav: navRoute.nav,
      state: navRoute.settings.state,
      icon: navRoute.settings.icon,
      type: navRoute.settings.type

@@ -23,7 +23,9 @@
                     title: 'dashboard',
                     settings: {
                         nav: 1,
-                        content: '<i class="fa fa-dashboard"></i> Dashboard'
+                        type: 'link',
+                        state: 'dashboard',
+                        content: 'fa fa-map-marker'
                     }
                 }
             }

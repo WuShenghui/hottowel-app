@@ -20,7 +20,7 @@
                     templateUrl: 'app/department/it/it.html',
                     controller: 'ITController',
                     controllerAs: 'vm',
-                    title: 'IT Department',
+                    title: 'IT',
                     settings: {
                         nav: 1,
                         menuGroup: 'Department',
