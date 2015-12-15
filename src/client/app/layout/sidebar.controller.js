@@ -37,10 +37,12 @@
                                 return;
                             }
                         }                        
-                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));                                                   
+                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));   
                     } else {
                         vm.navRoutes.menuGroups.push(menuService.newMenu(r));
                     }
+
+                    vm.navRoutes.menuGroups.sort(menuService.sortByType)   
                 }       
             });
         }

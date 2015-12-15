@@ -12,6 +12,8 @@
       newMenu: newMenu,
       newMenuGroups: newMenuGroups,
       newMenuGroupItem: newMenuGroupItem,
+      sortByName: sortByName,
+      sortByType: sortByType,
       toggleSelectMenuGroup: toggleSelectMenuGroup,
       isMenuGroupSelected: isMenuGroupSelected,
       selectPage: selectPage
@@ -38,7 +40,7 @@
      menus:[
          {
              name: navRoute.title,
-             nav: navRoute.nav,
+             nav: navRoute.settings.nav,
              state: navRoute.settings.state,
              icon: navRoute.settings.icon,
              type: navRoute.settings.type
@@ -50,7 +52,7 @@
  function newMenuGroupItem(navRoute) {
    return {
      name: navRoute.title,
-     nav: navRoute.nav,
+     nav: navRoute.settings.nav,
      state: navRoute.settings.state,
      icon: navRoute.settings.icon,
      type: navRoute.settings.type
@@ -71,10 +73,14 @@
     self.currentPage = page;
   }
 
-  function sortByHumanName (a, b) {
-    return (a.humanName < b.humanName) ? -1 :
-      (a.humanName > b.humanName) ? 1 : 0;
+  function sortByType (a, b) {
+    return a.type === 'link' || b.type === 'link' ? 1 : 0;
   }
-  
+
+  function sortByName (a, b) {
+    return (a.name < b.name)  ? -1 :
+      (a.name > b.name) ? 1 : 0;
+  }
+
   }
 })();
