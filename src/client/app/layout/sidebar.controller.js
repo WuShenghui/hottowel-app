@@ -29,30 +29,15 @@
         function getNavRoutes() {
             states.filter(function(r) {
                 if (r.settings) {
-                    var isContain = false;
-                    var containIndex = 0;
-                    
-                    var length = vm.navRoutes.menuGroups.length;
-                    if (length == 0) {
-                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));
-                        return;
-                    }
-                    
-                    if(r.settings.menuGroup) {
+                    if (r.settings.menuGroup) {
+                        var length = vm.navRoutes.menuGroups.length;
                         for (var index = 0; index < length; index++) {
                             if (vm.navRoutes.menuGroups[index].name && vm.navRoutes.menuGroups[index].name == r.settings.menuGroup) {
-                                isContain = true;
-                                containIndex = index;
-                                break;
+                                vm.navRoutes.menuGroups[index].menus.push(menuService.newMenuGroupItem(r));
+                                return;
                             }
-                        }   
-    
-                        if(isContain) {
-                            vm.navRoutes.menuGroups[containIndex].menus.push(menuService.newMenuGroupItem(r));
-                        }
-                        else {
-                            vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));
-                        }  
+                        }                        
+                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));                                                   
                     } else {
                         vm.navRoutes.menuGroups.push(menuService.newMenu(r));
                     }
