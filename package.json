@@ -6,6 +6,15 @@
     "node": "0.10.x",
     "npm": "2.1.x"
   },
+  "repository": {
+    "type": "git",
+    "url": "WuShenghui/hottowel-app"
+  },
+  "author": {
+    "name": "WuShenghui",
+    "email": "",
+    "url": "https://github.com/WuShenghui"
+  },
   "scripts": {
     "init": "npm install",
     "install": "bower install",
