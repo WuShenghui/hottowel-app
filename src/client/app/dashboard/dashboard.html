@@ -26,8 +26,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="widget wviolet">
-                        <div ht-widget-header title="People"
-                             allow-collapse="true"></div>
+                        <a ht-widget-header title="People" href="/department/hr" allow-collapse="true"></a>
                         <div class="widget-content text-center text-info">
                             <table class="table table-condensed table-striped">
                                 <thead>
@@ -55,10 +54,20 @@
                 </div>
                 <div class="col-md-6">
                     <div class="widget wgreen">
-                        <div ht-widget-header title="{{vm.news.title}}"
-                             allow-collapse="true"></div>
+                        <div ht-widget-header title="{{vm.news.title}}" allow-collapse="true"></div>
                         <div class="widget-content text-center text-info">
                             <small>{{vm.news.description}}</small>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget wblue">
+                        <a ht-widget-header title="Admin" href="/admin" allow-collapse="true"></a>
+                        <div class="widget-content text-center text-info">
+                            <small>Go to Admin module.</small>
                         </div>
                         <div class="widget-foot">
                             <div class="clearfix"></div>
