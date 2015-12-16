@@ -1,7 +1,11 @@
 {
   "name": "hottowel-app",
   "description": "hottowel app Project Generated from HotTowel Angular",
-  "version": "0.0.0",
+  "version": "0.1.1",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.1.x"
+  },
   "scripts": {
     "init": "npm install",
     "install": "bower install",
