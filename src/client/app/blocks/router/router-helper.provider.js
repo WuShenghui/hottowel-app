@@ -102,13 +102,21 @@
                 $rootScope.$on('$stateChangeSuccess',
                   function (event, toState, toParams, fromState, fromParams) {
                       menuService.refreshMenuStatus(toState);
-                      getSiteMap();
+                      updateSiteMap(toState);
                   });
             }
 
-            function getSiteMap() {
-                var formatedPath = [];
-                return formatedPath;
+            function updateSiteMap(currentState) {
+                if (currentState.settings.menuGroup) {
+                    initNavInfo(currentState.settings.menuGroup, currentState.title);
+                } else {
+                    initNavInfo(null, currentState.title);
+                }
+            }
+
+            function initNavInfo(parent, child) {
+                $rootScope.navInfos = parent === child || parent === null ?
+                                      [child] : [parent, child];
             }
         }
     }
