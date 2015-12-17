@@ -11,16 +11,10 @@
         var vm = this;
         var states = routerHelper.getStates();
         vm.isCurrent = isCurrent;
-        
         vm.navRoutes = menuService;
         vm.isOpen = isOpen;
         vm.toggleOpen = toggleOpen;
         vm.autoFocusContent = false;
-
-        vm.status = {
-          isFirstOpen: true,
-          isFirstDisabled: false
-        };
 
         activate();
 
@@ -31,19 +25,22 @@
                 if (r.settings) {
                     if (r.settings.menuGroup) {
                         var length = vm.navRoutes.menuGroups.length;
-                        for (var index = 0; index < length; index++) {
-                            if (vm.navRoutes.menuGroups[index].name && vm.navRoutes.menuGroups[index].name == r.settings.menuGroup) {
-                                vm.navRoutes.menuGroups[index].menus.push(menuService.newMenuGroupItem(r));
+                        var menuName = '';
+                        for (var i = 0; i < length; i++) {
+                            menuName = vm.navRoutes.menuGroups[i].name;
+                            if (menuName && menuName === r.settings.menuGroup) {
+                                var newMenu = menuService.newMenuGroupItem(r);
+                                vm.navRoutes.menuGroups[i].menus.push(newMenu);
                                 return;
                             }
-                        }                        
-                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));   
+                        }
+                        vm.navRoutes.menuGroups.push(menuService.newMenuGroups(r));
                     } else {
                         vm.navRoutes.menuGroups.push(menuService.newMenu(r));
                     }
 
-                    vm.navRoutes.menuGroups.sort(menuService.sortByType)   
-                }       
+                    vm.navRoutes.menuGroups.sort(menuService.sortByType);
+                }
             });
         }
 
@@ -56,11 +53,11 @@
         }
 
         function isOpen(menuGroup) {
-          return menuService.isMenuGroupSelected(menuGroup);
+            return menuService.isMenuGroupSelected(menuGroup);
         }
 
         function toggleOpen(menuGroup) {
-          menuService.toggleSelectMenuGroup(menuGroup);
+            menuService.toggleSelectMenuGroup(menuGroup);
         }
     }
 })();

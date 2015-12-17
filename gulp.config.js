@@ -28,7 +28,7 @@ module.exports = function() {
         client: client,
         css: [
             temp + 'styles.css',
-            client +'styles/menu.css'
+            client + 'styles/menu.css'
         ],
         fonts: bower.directory + 'font-awesome/fonts/**/*.*',
         html: client + '**/*.html',

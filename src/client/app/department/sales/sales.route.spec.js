@@ -12,18 +12,18 @@ describe('sales routes', function () {
             $templateCache.put(view, '');
         });
 
-        it('should map state sales to url /department/sales ', function() {
-            expect($state.href('sales', {})).to.equal('/department/sales');
+        it('should map state department-sales to url /department/sales ', function() {
+            expect($state.href('department-sales', {})).to.equal('/department/sales');
         });
 
-        it('should map /department/sales route to sales View template', function () {
-            expect($state.get('sales').templateUrl).to.equal(view);
+        it('should map /department/sales route to department sales View template', function () {
+            expect($state.get('department-sales').templateUrl).to.equal(view);
         });
 
-        it('of sales should work with $state.go', function () {
-            $state.go('sales');
+        it('of department sales should work with $state.go', function () {
+            $state.go('department-sales');
             $rootScope.$apply();
-            expect($state.is('sales'));
+            expect($state.is('department-sales'));
         });
     });
 });

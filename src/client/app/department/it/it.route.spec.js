@@ -13,17 +13,17 @@ describe('department routes', function () {
         });
 
         it('should map state it to url /department/it ', function() {
-            expect($state.href('department.it', {})).to.equal('/department/it');
+            expect($state.href('department-it', {})).to.equal('/department/it');
         });
 
         it('should map /department/it route to department/it View template', function () {
-            expect($state.get('department').templateUrl).to.equal(view);
+            expect($state.get('department-it').templateUrl).to.equal(view);
         });
 
-        it('of department.it should work with $state.go', function () {
-            $state.go('department.it');
+        it('of department-it should work with $state.go', function () {
+            $state.go('department-it');
             $rootScope.$apply();
-            expect($state.is('department.it'));
+            expect($state.is('department-it'));
         });
     });
 });
