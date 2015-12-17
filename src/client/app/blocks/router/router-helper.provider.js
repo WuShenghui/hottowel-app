@@ -82,7 +82,7 @@
             function init() {
                 handleRoutingErrors();
                 updateDocTitle();
-                updateMenu();
+                updateNavInfo();
             }
 
             function getStates() { return $state.get(); }
@@ -98,11 +98,17 @@
                 );
             }
 
-            function updateMenu() {
+            function updateNavInfo() {
                 $rootScope.$on('$stateChangeSuccess',
                   function (event, toState, toParams, fromState, fromParams) {
                       menuService.refreshMenuStatus(toState);
+                      getSiteMap();
                   });
+            }
+
+            function getSiteMap() {
+                var formatedPath = [];
+                return formatedPath;
             }
         }
     }
