@@ -10,6 +10,7 @@
     function dataservice($http, $q, exception, logger) {
         var service = {
             getPeople: getPeople,
+            getPeopleList: getPeopleList,
             getMessageCount: getMessageCount
         };
 
@@ -21,14 +22,21 @@
             return $http.get('/api/people')
                 .then(success)
                 .catch(fail);
+        }
 
-            function success(response) {
-                return response.data;
-            }
+        function getPeopleList(params) {
+            var reqParams = params.pageIndex + '/' + params.pageSize;
+            return $http.get('/api/peopleList/' + reqParams)
+                .then(success)
+                .catch(fail);
+        }
 
-            function fail(e) {
-                return exception.catcher('XHR Failed for getPeople')(e);
-            }
+        function success(response) {
+            return response.data;
+        }
+
+        function fail(e) {
+            return exception.catcher('XHR Failed for getPeople')(e);
         }
     }
 })();

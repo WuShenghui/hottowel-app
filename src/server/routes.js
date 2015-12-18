@@ -4,6 +4,7 @@ var data = require('./data');
 
 router.get('/people', getPeople);
 router.get('/person/:id', getPerson);
+router.get('/peopleList/:pageIndex/:pageSize', peopleList);
 router.get('/*', four0four.notFoundMiddleware);
 
 module.exports = router;
@@ -11,7 +12,7 @@ module.exports = router;
 //////////////
 
 function getPeople(req, res, next) {
-    res.status(200).send(data.people);
+    res.status(200).send(data.people.slice(0, 5));
 }
 
 function getPerson(req, res, next) {
@@ -25,4 +26,14 @@ function getPerson(req, res, next) {
     } else {
         four0four.send404(req, res, 'person ' + id + ' not found');
     }
+}
+
+function peopleList(req, res, next) {
+    var pageIndex = req.params.pageIndex;
+    var pageSize = req.params.pageSize;
+    if (pageIndex * pageSize > data.people.length) {
+        getPeople();
+    }
+    var startIndex = pageIndex === 1 ? 0 : pageIndex * pageSize;
+    res.status(200).send(data.people.slice(startIndex, pageSize));
 }
