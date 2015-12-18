@@ -25,7 +25,7 @@
                         nav: 1,
                         type: 'link',
                         state: 'dashboard',
-                        content: 'fa fa-map-marker'
+                        icon: ''
                     }
                 }
             }

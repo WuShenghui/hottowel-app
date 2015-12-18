@@ -24,7 +24,7 @@
                     settings: {
                         nav: 1,
                         menuGroup: 'Admin',
-                        icon: 'fa fa-map-marker',
+                        icon: 'fa fa-user',
                         type: 'link',
                         state: 'admin',
                     }

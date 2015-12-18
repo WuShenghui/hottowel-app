@@ -24,7 +24,7 @@
                     settings: {
                         nav: 3,
                         menuGroup: 'Department',
-                        icon: 'fa fa-group',
+                        icon: 'fa fa-user-plus',
                         type: 'link',
                         state: 'department-hr',
                     }

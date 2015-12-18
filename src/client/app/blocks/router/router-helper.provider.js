@@ -107,16 +107,19 @@
             }
 
             function updateSiteMap(currentState) {
-                if (currentState.settings.menuGroup) {
-                    initNavInfo(currentState.settings.menuGroup, currentState.title);
+                if (currentState.settings && currentState.settings.menuGroup) {
+                    initNavInfo(currentState.settings, currentState);
                 } else {
-                    initNavInfo(null, currentState.title);
+                    initNavInfo(null, currentState);
                 }
             }
 
             function initNavInfo(parent, child) {
+                var childIcon = child.settings ? child.settings.icon : '';
                 $rootScope.navInfos = parent === child || parent === null ?
-                                      [child] : [parent, child];
+                                      [{name: child.title, icon: childIcon}] :
+                                      [{name: parent.menuGroup, icon: 'fa fa-wrench'},
+                                       {name: child.title, icon: childIcon}];
             }
         }
     }
