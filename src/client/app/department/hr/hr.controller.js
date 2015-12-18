@@ -24,9 +24,9 @@
 
         function getPeopleList(params) {
             var reqParams = {pageIndex: params.page(), pageSize: params.count()};
-            return dataservice.getPeopleList(reqParams).then(function (data) {
-                vm.people = data;
-                params.total(data.length);
+            return dataservice.getPeopleList(reqParams).then(function (res) {
+                vm.people = res.data;
+                params.total(res.total);
                 return vm.people;
             });
         }

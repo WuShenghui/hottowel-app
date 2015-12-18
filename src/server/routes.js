@@ -32,8 +32,14 @@ function peopleList(req, res, next) {
     var pageIndex = req.params.pageIndex;
     var pageSize = req.params.pageSize;
     if (pageIndex * pageSize > data.people.length) {
-        getPeople();
+        res.status(200).send(data.people.slice(0, pageSize));
+        return;
     }
-    var startIndex = pageIndex === 1 ? 0 : pageIndex * pageSize;
-    res.status(200).send(data.people.slice(startIndex, pageSize));
+
+    var startIndex = pageIndex > 1 ? pageIndex * pageSize : pageIndex - 1;
+    var result = {
+        data: data.people.slice(startIndex, pageSize),
+        total: data.people.length
+    };
+    res.status(200).send(result);
 }
