@@ -31,14 +31,15 @@ function getPerson(req, res, next) {
 function peopleList(req, res, next) {
     var pageIndex = req.params.pageIndex;
     var pageSize = req.params.pageSize;
-    if (pageIndex * pageSize > data.people.length) {
+    var start = pageIndex > 1 ? (pageIndex - 1) * pageSize : pageIndex - 1;
+    var end = Number(start) + Number(pageSize);
+    if (start > data.people.length) {
         res.status(200).send(data.people.slice(0, pageSize));
         return;
     }
 
-    var startIndex = pageIndex > 1 ? pageIndex * pageSize : pageIndex - 1;
     var result = {
-        data: data.people.slice(startIndex, pageSize),
+        data: data.people.slice(start, end),
         total: data.people.length
     };
     res.status(200).send(result);

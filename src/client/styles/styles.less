@@ -379,7 +379,7 @@ form {
 }
 
 .form-horizontal .control-label {
-    width: 90px;
+    width: 100px;
 }
 
 .form-horizontal .controls {
@@ -815,8 +815,21 @@ form {
     margin: 2em 2em 0 2em;
 }
 
-.sitemap .breadcrumb {
-    margin-bottom : 0px;
+.sitemap li {
+    margin: 0 0 0 2px;
+    display: inline-block;
+    float: left;
+}
+
+.sitemap li i {
+    padding: 0 0 0 2px;
+}
+
+.sitemap .page-breadcrumb {
+    padding: 8px;
+    list-style: none;
+    height: 40px;
+    background-color: #f7f7f7;
 }
 
 /* Pagination*/
@@ -883,6 +896,13 @@ form {
     .widget .table-bordered {
         border: 0;
     }
+
+        .widget .table-bordered thead {
+            border-top: 1px solid #ccc !important;
+        }
+            .widget .table-bordered thead th{
+                line-height: 2 !important;
+            }
 
         .widget .table-bordered th {
             border-bottom: 1px solid #ccc !important;

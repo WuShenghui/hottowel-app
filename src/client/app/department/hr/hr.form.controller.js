@@ -3,11 +3,11 @@
 
     angular
         .module('app.department.hr')
-        .controller('HRController', HRController);
+        .controller('HRFormController', HRFormController);
 
-    HRController.$inject = ['$q', 'dataservice', 'logger', 'NgTableParams'];
+    HRFormController.$inject = ['$q', 'dataservice', 'logger', 'NgTableParams'];
     /* @ngInject */
-    function HRController($q, dataservice, logger, NgTableParams) {
+    function HRFormController($q, dataservice, logger, NgTableParams) {
         var vm = this;
         vm.title = 'HR';
 
