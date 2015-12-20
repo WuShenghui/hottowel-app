@@ -8,6 +8,8 @@
 
 ## Secondary development of new features
 1.  Angular Material style side nave menu
+2.  sitemap
+3.  department hr module manager 
 
 ## Prerequisites
 
