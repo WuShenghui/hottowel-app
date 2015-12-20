@@ -7,14 +7,14 @@
                     <div class="widget-content user">
                         <form class="form-inline">
                             <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                <label for="name">Name</label>
+                                <input type="text" ng-model="vm.filters.name" class="form-control" id="name" placeholder="name">
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                <label for="location">Lacation</label>
+                                <input type="text" ng-model="vm.filters.location" class="form-control" id="location" placeholder="Location">
                             </div>
-                            <button type="submit" class="btn btn-default">Search</button>
+                            <!-- <button type="submit" class="btn btn-default" ng-click="vm.search">Search</button> -->
                         </form>
                         <a class="btn btn-primary btn-sm" href="/department/hr/form"><span class="fa fa-plus"></span></a>
                         <div loading-container="vm.tableParams.settings().$loading">
@@ -24,26 +24,26 @@
                                         <a target="_blank" ng-href="">
                                             {{
                                             vm.tableParams.page() > 1 ?
-                                                (vm.tableParams.page() - 1) * vm.tableParams.count() + $index + 1 :
-                                                $index + 1
-                                            }}
-                                        </a>
-                                    </td>
-                                    <td data-title="'First Name'">{{p.firstName}}</td>
-                                    <td data-title="'Last Name'">
-                                        <a target="_blank" ng-href="">
-                                            <nobr>
-                                                {{p.lastName}}
-                                            </nobr>
-                                        </a>
-                                    </td>
-                                    <td data-title="'Age'">
-                                        <nobr>{{p.age}}</nobr>
-                                    </td>
-                                    <td data-title="'Location'">{{p.location}}</td>
-                                    <td>
+                                            (vm.tableParams.page() - 1) * vm.tableParams.count() + $index + 1 :
+                                            $index + 1
+                                        }}
+                                    </a>
+                                </td>
+                                <td data-title="'First Name'">{{p.firstName}}</td>
+                                <td data-title="'Last Name'">
+                                    <a target="_blank" ng-href="">
+                                        <nobr>
+                                            {{p.lastName}}
+                                        </nobr>
+                                    </a>
+                                </td>
+                                <td data-title="'Age'">
+                                    <nobr>{{p.age}}</nobr>
+                                </td>
+                                <td data-title="'Location'">{{p.location}}</td>
+                                    <!-- <td>
                                         <button class="btn btn-primary btn-sm" ng-click="vm.save(row)"><span class="fa fa-edit"></span></button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </table>
                         </div>

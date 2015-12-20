@@ -35,9 +35,9 @@
             config: {
                 url: '/department/hr/form',
                 templateUrl: 'app/department/hr/hr.form.html',
-                controller: 'HRController',
+                controller: 'HRFormController',
                 controllerAs: 'vm',
-                title: 'HR',
+                title: 'HR Form',
                 settings: {
                 }
             }
