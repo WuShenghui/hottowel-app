@@ -8,9 +8,9 @@
 
 ## Secondary development of new features
 ![Hottowel App](/demo.gif)
-1. Angular Material style side nave menu
-2. sitemap
-3. department hr module manager 
+* Angular Material style side nave menu
+* sitemap
+* department hr module manager 
 
 ## Prerequisites
 
