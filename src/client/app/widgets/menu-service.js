@@ -17,8 +17,7 @@
             sortByName: sortByName,
             sortByType: sortByType,
             toggleSelectMenuGroup: toggleSelectMenuGroup,
-            isMenuGroupSelected: isMenuGroupSelected,
-            selectPage: selectPage
+            isMenuGroupSelected: isMenuGroupSelected
         };
 
         return service;
@@ -61,26 +60,21 @@
             };
         }
 
-        function toggleSelectMenuGroup(menuGroup) {
-            self.openedMenuGroup = menuGroup;
+        function toggleSelectMenuGroup(menuGroup, isRefresh) {
+            self.openedMenuGroup = (self.openedMenuGroup === menuGroup && !isRefresh ?
+                                    null :
+                                    menuGroup);
         }
 
         function isMenuGroupSelected(menuGroup) {
             return self.openedMenuGroup === menuGroup;
         }
 
-        function selectPage(menuGroup, page) {
-            if (page && page.url && $location.path(page.url)) {
-                self.currentMenuGroup = menuGroup;
-                self.currentPage = page;
-            }
-        }
-
         function refreshMenuStatus(state) {
             if (state && state.settings && state.settings.menuGroup) {
                 for (var index = 0; index < service.menuGroups.length; index++) {
                     if (state.settings.menuGroup === service.menuGroups[index].name) {
-                        toggleSelectMenuGroup(service.menuGroups[index]);
+                        toggleSelectMenuGroup(service.menuGroups[index], true);
                         return;
                     }
                 }

@@ -21,26 +21,19 @@
                             <table ng-table="vm.tableParams" class="table table-condensed table-bordered table-striped">
                                 <tr ng-repeat="p in $data">
                                     <td data-title="'Index'">
+                                        {{(vm.tableParams.page() - 1) * vm.tableParams.count() + $index + 1}}
+                                    </td>
+                                    <td data-title="'Name'">
                                         <a target="_blank" ng-href="">
-                                            {{
-                                            vm.tableParams.page() > 1 ?
-                                            (vm.tableParams.page() - 1) * vm.tableParams.count() + $index + 1 :
-                                            $index + 1
-                                        }}
-                                    </a>
-                                </td>
-                                <td data-title="'First Name'">{{p.firstName}}</td>
-                                <td data-title="'Last Name'">
-                                    <a target="_blank" ng-href="">
-                                        <nobr>
-                                            {{p.lastName}}
-                                        </nobr>
-                                    </a>
-                                </td>
-                                <td data-title="'Age'">
-                                    <nobr>{{p.age}}</nobr>
-                                </td>
-                                <td data-title="'Location'">{{p.location}}</td>
+                                            <nobr>
+                                               {{p.firstName}} {{p.lastName}}
+                                            </nobr>
+                                        </a>
+                                    </td>
+                                    <td data-title="'Age'">
+                                        <nobr>{{p.age}}</nobr>
+                                    </td>
+                                    <td data-title="'Location'">{{p.location}}</td>
                                     <!-- <td>
                                         <button class="btn btn-primary btn-sm" ng-click="vm.save(row)"><span class="fa fa-edit"></span></button>
                                     </td> -->
