@@ -2,11 +2,13 @@ var router = require('express').Router();
 var four0four = require('./utils/404')();
 var data = require('./data');
 
-router.get('/people', getPeople);
-router.get('/person/:id', getPerson);
-router.get('/peopleList/:pageIndex/:pageSize/:filter', getPeopleList);
+router.get('/peopleList', getPeople);
+router.get('/people', getPeopleList);
+router.get('/people/:id', getPerson);
+router.post('/people', addPerson);
+router.put('/people', updatePerson);
+router.delete('/people/:id', deletePerson);
 router.get('/*', four0four.notFoundMiddleware);
-router.post('/people/:personInfo', addPerson);
 
 module.exports = router;
 
@@ -30,11 +32,13 @@ function getPerson(req, res, next) {
 }
 
 function getPeopleList(req, res, next) {
-    var pageIndex = req.params.pageIndex;
-    var pageSize = req.params.pageSize;
+    console.warn('getPeopleList...');
+    var params = JSON.parse(req.query.filters);
+    var pageIndex = params.pageIndex;
+    var pageSize = params.pageSize;
     var start = pageIndex > 1 ? (pageIndex - 1) * pageSize : pageIndex - 1;
     var end = Number(start) + Number(pageSize);
-    var filter = JSON.parse(req.params.filter);
+    var filter = params.filter;
     var isFilter = filter.name.trim().length > 0 ||
                     filter.location.trim().length > 0;
     var source = isFilter ?
@@ -51,10 +55,46 @@ function getPeopleList(req, res, next) {
 }
 
 function addPerson(req, res, next) {
-    var person = JSON.parse(req.params.personInfo);
+    console.warn('addPerson..');
+    var person = req.body;
     person.id = data.people.length + 1;
     data.people.push(person);
     res.status(200).send();
+}
+
+function deletePerson(req, res, next) {
+    console.warn('deletePerson..');
+    var id = +req.params.id;
+    var i = index(id);
+    if (i !== -1) {
+        data.people.splice(i, 1);
+        res.status(200).send();
+    } else {
+        four0four.send404(req, res, 'person ' + id + ' not found');
+    }
+}
+
+function updatePerson(req, res, next) {
+    console.warn('updatePerson..');
+    var person = req.body;
+    var id = person.id;
+    var i = index(id);
+    if (i !== -1) {
+        data.people.splice(i, 1, person);
+        res.status(200).send();
+    } else {
+        four0four.send404(req, res, 'person ' + id + ' not found');
+    }
+}
+
+function index(id) {
+    for (var i = data.people.length - 1; i >= 0; i -= 1) {
+        if (data.people[i].id === id) {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 function getPeopleSource(name, location) {

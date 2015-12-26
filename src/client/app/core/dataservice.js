@@ -10,9 +10,7 @@
     function dataservice($http, $q, exception, logger) {
         var service = {
             getPeople: getPeople,
-            getPeopleList: getPeopleList,
-            getMessageCount: getMessageCount,
-            addPerson: addPerson
+            getMessageCount: getMessageCount
         };
 
         return service;
@@ -20,23 +18,9 @@
         function getMessageCount() { return $q.when(72); }
 
         function getPeople() {
-            return $http.get('/api/people')
+            return $http.get('/api/peopleList')
                 .then(success)
                 .catch('getPeople', fail);
-        }
-
-        function getPeopleList(params) {
-            var reqParams = params.pageIndex + '/' + params.pageSize;
-            reqParams = reqParams + '/' + JSON.stringify(params.filter);
-            return $http.get('/api/peopleList/' + reqParams)
-                .then(success)
-                .catch('getPeopleList', fail);
-        }
-
-        function addPerson(params) {
-            return $http.post('/api/people/' + params)
-                .then(success)
-                .catch('addPerson', fail);
         }
 
         function success(response) {

@@ -3,7 +3,8 @@
 
     angular.module('app.department.hr', [
         'app.core',
-        'app.widgets'
+        'app.widgets',
+        'ngResource'
       ]);
 
 })();

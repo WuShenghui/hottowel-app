@@ -33,7 +33,7 @@
         {
             state: 'department-hr-form',
             config: {
-                url: '/department/hr/form',
+                url: '/department/hr/form/:id/',
                 templateUrl: 'app/department/hr/hr.form.html',
                 controller: 'HRFormController',
                 controllerAs: 'vm',

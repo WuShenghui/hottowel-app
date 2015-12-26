@@ -5,11 +5,12 @@
         .module('app.department.hr')
         .controller('HRController', HRController);
 
-    HRController.$inject = ['$q', 'dataservice', 'logger', 'NgTableParams'];
+    HRController.$inject = ['$q', 'logger', 'NgTableParams', 'Data'];
     /* @ngInject */
-    function HRController($q, dataservice, logger, NgTableParams) {
+    function HRController($q, logger, NgTableParams, Data) {
         var vm = this;
         vm.title = 'HR';
+        vm.delete = deleteItem;
         vm.filters = {
             name: '',
             location: ''
@@ -32,9 +33,16 @@
                 pageIndex: params.page(),
                 pageSize: params.count()
             };
-            dataservice.getPeopleList(reqParams).then(function (res) {
+            Data.query({filters: reqParams}, function (res) {
                 params.total(res.total);
                 $defer.resolve(res.data);
+            });
+        }
+
+        function deleteItem (item) {
+            Data.delete({id: item.id}, function() {
+                logger.info('delete');
+                activate();
             });
         }
     }
